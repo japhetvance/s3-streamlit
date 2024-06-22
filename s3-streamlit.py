@@ -137,7 +137,7 @@ elif my_page == 'Interactive highlights':
 
 elif my_page == 'News summarization':
     st.title('Summarizing Rappler articles')
-    df = pd.read_csv("data/rappler-2024-cleaned-st.csv").sort_values(
+    df = pd.read_csv("data/rappler-2024-cleaned.csv").sort_values(
         'date', ascending=False
     )
 
