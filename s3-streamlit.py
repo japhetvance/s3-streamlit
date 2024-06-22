@@ -11,7 +11,23 @@ from skllm.models.gpt.classification.zero_shot import ZeroShotGPTClassifier
 from skllm.models.gpt.text2text.summarization import GPTSummarizer
 from openai import OpenAI
 
-api_key = open('openaiapikey.txt').read()
+import os
+import openai
+
+api_key = os.getenv('OPENAI_API_KEY')
+if not api_key:
+    raise ValueError("API key not found. Please set the OPENAI_API_KEY environment variable.")
+
+openai.api_key = api_key
+
+# Your code to interact with OpenAI API
+response = openai.Completion.create(
+    engine="davinci-codex",
+    prompt="Hello, world!",
+    max_tokens=5
+)
+print(response)
+
 SKLLMConfig.set_openai_key(api_key)
 client = OpenAI(api_key=api_key)
 
